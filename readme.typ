@@ -72,7 +72,7 @@ Um beim Plot die $y$ Achse außeinander zu ziehen habe ich mich entschieden dies
 
 #let xp = exps.map(p => p.at(0))
 #let yp = exps.map(p => p.at(1))
-
+#v(50mm)
 Um den Zusammenhang zwischen $n$ und der Laufzeit herauszufinden, kann man den Exponenten darstellen als $p(n)=log_2(f(n))$. So bekommen folgendes Ergebnis:
 
 #v(2mm)
@@ -90,3 +90,4 @@ Um den Zusammenhang zwischen $n$ und der Laufzeit herauszufinden, kann man den E
 #v(2mm)
 
 $=>$ Wir können Schlussfolgern dass unsere Exponenten Menge sich etwa kubisch verhällt.
+
