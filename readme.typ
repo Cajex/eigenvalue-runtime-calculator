@@ -1,7 +1,7 @@
 #import "@preview/lilaq:0.5.0" as lq
 
 #set page(paper: "a5", margin: (top: 12mm, bottom: 14mm, left: 12mm, right: 12mm))
-#set text(font: "Libertinus Serif", size: 10.0pt)
+#set text(font: "Libertinus Serif", size: 7.5pt)
 #set par(leading: 0.5em, justify: true)
 
 = Laufzeit-Messungen $t(n)$
