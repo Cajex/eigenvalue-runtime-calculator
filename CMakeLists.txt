@@ -11,6 +11,7 @@ endif()
 
 set(CMAKE_INTERPROCEDURAL_OPTIMIZATION_RELEASE ON)
 
+find_package(nlohmann_json CONFIG REQUIRED)
 
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(LAPACKE REQUIRED lapacke)
@@ -31,5 +32,7 @@ if(OPENBLAS_FOUND)
 endif()
 
 target_link_libraries(comp PRIVATE
-        ${LAPACKE_LINK_LIBRARIES}
+        ${LAPACKE_LINK_LIBRARIES} nlohmann_json::nlohmann_json
 )
+
+

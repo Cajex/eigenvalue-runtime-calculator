@@ -8,6 +8,8 @@
 #include <complex>
 #include <format>
 #include <cstring>
+#include <nlohmann/json.hpp>
+#include <filesystem>
 
 constexpr size_t get_n(const unsigned char f) {
     return f < 2 ? 2u : 2u * get_n(f-1);
@@ -35,6 +37,7 @@ constexpr size_t repetitions() {
 std::vector<double> generate_matrix(size_t n);
 std::vector<std::complex<double>> calculate();
 void store_result(const std::vector<std::complex<double>>& result, size_t n);
+void store_time(double t);
 
 int main() {
     constexpr lapack_int n = N;
@@ -95,11 +98,14 @@ int main() {
     std::cout << "delta t: " << ms_total << " ms\n";
     std::cout << "delta t / repetitions: " << ms_avg << " ms\n";
 
+    store_time(ms_avg);
+    /*
     if constexpr (repetitions() < 1e2) {
         for (size_t rep = 0; rep < res.size(); ++rep) {
             store_result(res[rep], rep);
         }
     }
+    */
 
     return 0;
 }
@@ -165,4 +171,17 @@ void store_result(const std::vector<std::complex<double>>& result, size_t n) {
     for (const auto& z : result) {
         out << "[" << z.real() << " | " << z.imag() << "]" << '\n';
     }
+}
+
+void store_time(double t) {
+    nlohmann::json time_format;
+    if (std::filesystem::exists("result.json")) {
+        std::ifstream time_result("result.json");
+        time_format = nlohmann::json::parse(time_result);
+        time_result.close();
+    }
+    time_format[std::to_string(N)] = t;
+    std::ofstream out("result.json", std::ios::trunc);
+    out << time_format.dump(2);
+    out.close();
 }
