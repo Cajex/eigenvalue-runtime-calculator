@@ -53,7 +53,7 @@ Um beim Plot die $y$ Achse außeinander zu ziehen habe ich mich entschieden dies
 
   xlim: (2, 2048),
   xscale: lq.scale.log(base: 2),
-
+  
   lq.plot(xs, ys, mark: "o"),
 )
 
@@ -80,7 +80,7 @@ Um den Zusammenhang zwischen $n$ und der Laufzeit herauszufinden, kann man den E
   #table(
   columns: (auto, auto),
   inset: 10pt,
-
+  
   align: center,
   table.header([$n$], [$p(n)$]),
   ..exps.map(p => (str(p.at(0)), fmt(p.at(1)))).flatten()
@@ -89,5 +89,19 @@ Um den Zusammenhang zwischen $n$ und der Laufzeit herauszufinden, kann man den E
 
 #v(2mm)
 
-$=>$ Wir können Schlussfolgern dass unsere Exponenten Menge sich etwa kubisch verhällt.
+$=>$ Wir können Schlussfolgern, dass unsere Exponenten Menge sich etwa kubisch verhällt.
 
+#v(2mm)
+
+Wenn wir eine komplexe Matrix betrachten, $bb(C)^(n times n)$, gilt nach definition für die Multiplikation von zwei komplexen Zahlen $attach(z, br: 1) , attach(z, br: 2) in bb(C)$
+#align(center)[
+$attach(z, br: 1) = a + b i$ und
+$attach(z, br: 2) = c + d i$
+$(a, b, c, d in bb(R))$
+
+  $attach(z, br: 1)attach(z, br: 2) = (a + b i)*(c + d i) = a c + a d i+ b i c + b d i^2$
+]
+#v(2mm)
+Wir haben also $4$ multiplikationen zwischen reelen Zahlen, $3$ Additionen, und eine komplexes Quadrat, welches wenn wir es zerlegen auf $z^2 = (a+b i)^2 = (a^2 - b^2) + (2a b)i = ((a a) - (b b)) + (2a b)i$ kommt, dh. auch nochmal 3 Multiplikationen und 2 Additionen. Zusammen ergibt das $7$ Multiplikationen und 5 Additionen.
+
+Allerdings muss gesagt sein, dass sowieso komplexe Zahlen, mit einem real und einem imaginärem Teil, auch aus einer $bb(R)^(n times n)$ Matrix entstehen können. 
